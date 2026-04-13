@@ -61,6 +61,7 @@
     const cacheCartasTcg = new Map();
     const cachePacotesTcg = new Map();
     const cacheCartasPacoteTcg = new Map();
+    const cacheRequisicoesGet = new Map();
     let abaResultadoAtual = "informacoes";
     let cartasTcgAtuais = [];
     let cartasTcgFiltradasAtuais = [];
@@ -86,8 +87,9 @@
     const debounceBuscaMs = 120;
     const debounceBuscaPacoteMs = 220;
     const limiteConcorrenciaTcg = 6;
+    const chaveListaPokemonsCache = "pokedex-cache-lista-pokemons-v1";
     const tiposTcgDisponiveis = [
-      { valor: "Grass", rotulo: "Grama" },
+      { valor: "Grass", rotulo: "Planta" },
       { valor: "Fire", rotulo: "Fogo" },
       { valor: "Water", rotulo: "Água" },
       { valor: "Lightning", rotulo: "Elétrico" },
@@ -129,8 +131,22 @@
     };
 
     async function carregarLista() {
-      const res = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000");
-      const data = await res.json();
+      const cacheListaSalva = sessionStorage.getItem(chaveListaPokemonsCache);
+      let data;
+
+      if (cacheListaSalva) {
+        try {
+          data = JSON.parse(cacheListaSalva);
+        } catch {
+          data = null;
+        }
+      }
+
+      if (!data?.results) {
+        data = await buscarJson("https://pokeapi.co/api/v2/pokemon?limit=1000");
+        sessionStorage.setItem(chaveListaPokemonsCache, JSON.stringify(data));
+      }
+
       listaPokemons = data.results;
       listaPokemonsBusca = data.results.map(pokemon => ({
         ...pokemon,
@@ -212,7 +228,7 @@
           nomePt: cartaPt?.name || cartaEn.name || "Carta Pokémon",
           nomeEn: cartaEn.name || "Carta Pokémon",
           possuiVersaoPt: Boolean(cartaPt),
-          tipos: cartaPt?.types || cartaEn.types || [],
+          tipos: normalizarTiposTcg([...(cartaPt?.types || []), ...(cartaEn.types || [])]),
           subtipos: cartaPt?.subtypes || cartaEn.subtypes || [],
           categoria: cartaPt?.category || cartaEn.category || "",
           variantes: cartaPt?.variants || cartaEn.variants || {},
@@ -515,6 +531,8 @@
       botaoShiny.title = spriteAtualShiny
         ? "Voltar para a versão normal"
         : "Mostrar versão shiny";
+
+      atualizarCartasPokemonPorShiny();
     }
 
     function capitalizarTexto(texto) {
@@ -854,6 +872,59 @@
       return numero <= totalOficial;
     }
 
+    function normalizarTipoTcg(tipo) {
+      const chave = String(tipo || "").trim().toLowerCase();
+      const mapa = {
+        grass: "Grass",
+        planta: "Grass",
+        grama: "Grass",
+        fire: "Fire",
+        fogo: "Fire",
+        water: "Water",
+        agua: "Water",
+        "água": "Water",
+        lightning: "Lightning",
+        electric: "Lightning",
+        eletrico: "Lightning",
+        elétrico: "Lightning",
+        psychic: "Psychic",
+        psiquico: "Psychic",
+        psíquico: "Psychic",
+        fighting: "Fighting",
+        lutador: "Fighting",
+        darkness: "Darkness",
+        dark: "Darkness",
+        sombrio: "Darkness",
+        metal: "Metal",
+        steel: "Metal",
+        metalico: "Metal",
+        metálico: "Metal",
+        fairy: "Fairy",
+        fada: "Fairy",
+        dragon: "Dragon",
+        dragao: "Dragon",
+        dragão: "Dragon",
+        colorless: "Colorless",
+        normal: "Colorless",
+        voador: "Colorless",
+        flying: "Colorless",
+        incolor: "Colorless",
+        incoloro: "Colorless",
+        incoloró: "Colorless"
+      };
+
+      return mapa[chave] || String(tipo || "").trim();
+    }
+
+    function normalizarTiposTcg(tipos = []) {
+      return [...new Set(
+        tipos
+          .filter(Boolean)
+          .map(normalizarTipoTcg)
+          .filter(Boolean)
+      )];
+    }
+
     function obterOpcoesRaridadeTcg(cartas) {
       const mapa = new Map();
 
@@ -869,6 +940,22 @@
 
       return Array.from(mapa.entries())
         .map(([valor, rotulo]) => ({ valor, rotulo }))
+        .sort((a, b) => a.rotulo.localeCompare(b.rotulo, "pt-BR"));
+    }
+
+    function obterOpcoesTipoTcg(cartas) {
+      const tiposUnicos = new Set();
+
+      cartas.forEach(carta => {
+        (carta.tipos || []).forEach(tipo => {
+          if (tipo) {
+            tiposUnicos.add(tipo);
+          }
+        });
+      });
+
+      return tiposTcgDisponiveis
+        .filter(tipo => tiposUnicos.has(tipo.valor))
         .sort((a, b) => a.rotulo.localeCompare(b.rotulo, "pt-BR"));
     }
 
@@ -907,6 +994,7 @@
 
     function renderizarFiltrosTcg() {
       const cartasBase = estadoPacoteTcgAtual?.cartas || [];
+      const opcoesTipo = obterOpcoesTipoTcg(cartasBase);
       const opcoesRaridade = obterOpcoesRaridadeTcg(cartasBase);
       const opcoesSubtipo = obterOpcoesSubtipoTcg(cartasBase);
 
@@ -914,8 +1002,8 @@
         <div class="filtros-tcg" role="group" aria-label="Filtros das cartas TCG">
           <label class="filtro-tcg-campo">
             <span>Tipo</span>
-            <select onchange="atualizarFiltroTcg('tipo', this.value)">
-              ${renderizarOpcoesSelectTcg(tiposTcgDisponiveis, filtrosPacoteTcgAtivos.tipo, "Todos os tipos")}
+            <select onchange="atualizarFiltroTcg('tipo', this.value)" ${opcoesTipo.length === 0 ? "disabled" : ""}>
+              ${renderizarOpcoesSelectTcg(opcoesTipo, filtrosPacoteTcgAtivos.tipo, opcoesTipo.length === 0 ? "Sem tipos" : "Todos os tipos")}
             </select>
           </label>
           <label class="filtro-tcg-campo">
@@ -1157,6 +1245,33 @@
       return campos.some(campo => marcadores.some(marcador => campo.includes(marcador)));
     }
 
+    function cartaEhEspecialVisualTcg(carta) {
+      return cartaEhEspecialShinyTcg(carta)
+        || Boolean(carta.variantes?.holo)
+        || Boolean(carta.variantes?.reverse)
+        || Boolean(carta.variantes?.firstEdition);
+    }
+
+    function atualizarCartasPokemonPorShiny() {
+      if (!cartasTcgAtuais.length) {
+        cartasTcgFiltradasAtuais = [];
+        paginaTcgAtual = 0;
+        renderizarPainelTcgAtual();
+        return;
+      }
+
+      if (!spriteAtualShiny) {
+        cartasTcgFiltradasAtuais = cartasTcgAtuais;
+      } else {
+        const cartasShiny = cartasTcgAtuais.filter(cartaEhEspecialShinyTcg);
+        const cartasEspeciais = cartasTcgAtuais.filter(cartaEhEspecialVisualTcg);
+        cartasTcgFiltradasAtuais = cartasShiny.length > 0 ? cartasShiny : (cartasEspeciais.length > 0 ? cartasEspeciais : cartasTcgAtuais);
+      }
+
+      paginaTcgAtual = 0;
+      renderizarPainelTcgAtual();
+    }
+
     function cartaCombinaComFiltrosTcg(carta) {
       if (filtrosPacoteTcgAtivos.tipo && !(carta.tipos || []).includes(filtrosPacoteTcgAtivos.tipo)) {
         return false;
@@ -1260,13 +1375,28 @@
     }
 
     async function buscarJson(url) {
-      const resposta = await fetch(url);
-
-      if (!resposta.ok) {
-        throw new Error(`Falha ao buscar ${url}`);
+      if (cacheRequisicoesGet.has(url)) {
+        return cacheRequisicoesGet.get(url);
       }
 
-      return resposta.json();
+      const promessa = (async () => {
+        const resposta = await fetch(url);
+
+        if (!resposta.ok) {
+          throw new Error(`Falha ao buscar ${url}`);
+        }
+
+        return resposta.json();
+      })();
+
+      cacheRequisicoesGet.set(url, promessa);
+
+      try {
+        return await promessa;
+      } catch (erro) {
+        cacheRequisicoesGet.delete(url);
+        throw erro;
+      }
     }
 
     async function buscarCartasTcg(nomePokemon) {
@@ -1347,6 +1477,8 @@
           >
             <img
               src="${escaparHtml(imagemPrincipal)}"
+              loading="lazy"
+              decoding="async"
               data-fallback-png="${escaparHtml(imagemFallback)}"
               onerror="tratarErroImagemTcg(this)"
               alt="Carta TCG de ${escaparHtml(carta.nomePt)}"
@@ -1410,7 +1542,7 @@
             nomePt: cartaBase.name || "Carta Pokémon",
             nomeEn: cartaBase.name || "Carta Pokémon",
             possuiVersaoPt: false,
-            tipos: cartaBase.types || [],
+            tipos: normalizarTiposTcg(cartaBase.types || []),
             subtipos: cartaBase.subtypes || [],
             categoria: cartaBase.category || "",
             variantes: cartaBase.variants || {},
@@ -1644,7 +1776,7 @@
           cartasTcgAtuais = cartasTcg;
           nomeExibicaoTcgAtual = nomeExibicao;
           cartasTcgFiltradasAtuais = cartasTcgAtuais;
-          paginaTcgAtual = 0;
+          atualizarCartasPokemonPorShiny();
           secaoTcgHtml = renderizarSecaoTcg(
             obterCartasPaginaAtual(),
             nomeExibicao,
@@ -2034,6 +2166,8 @@
           >
             <img
               src="${escaparHtml(imagemPrincipal)}"
+              loading="lazy"
+              decoding="async"
               data-fallback-png="${escaparHtml(imagemFallback)}"
               onerror="tratarErroImagemTcg(this)"
               alt="Carta TCG de ${escaparHtml(carta.nomePt)}"
