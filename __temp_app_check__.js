@@ -39,21 +39,21 @@
 
     const tiposPT = {
       fire: { nome: "Fogo", emoji: "??" },
-      water: { nome: "Água", emoji: "??" },
+      water: { nome: "ï¿½gua", emoji: "??" },
       grass: { nome: "Planta", emoji: "??" },
-      electric: { nome: "Elétrico", emoji: "?" },
+      electric: { nome: "Elï¿½trico", emoji: "?" },
       ice: { nome: "Gelo", emoji: "??" },
       fighting: { nome: "Lutador", emoji: "??" },
       poison: { nome: "Veneno", emoji: "??" },
       ground: { nome: "Terra", emoji: "??" },
       flying: { nome: "Voador", emoji: "??" },
-      psychic: { nome: "Psíquico", emoji: "??" },
+      psychic: { nome: "Psï¿½quico", emoji: "??" },
       bug: { nome: "Inseto", emoji: "??" },
       rock: { nome: "Pedra", emoji: "??" },
       ghost: { nome: "Fantasma", emoji: "??" },
-      dragon: { nome: "Dragão", emoji: "??" },
+      dragon: { nome: "Dragï¿½o", emoji: "??" },
       dark: { nome: "Sombrio", emoji: "??" },
-      steel: { nome: "Aço", emoji: "??" },
+      steel: { nome: "Aï¿½o", emoji: "??" },
       fairy: { nome: "Fada", emoji: "?" },
       normal: { nome: "Normal", emoji: "?" }
     };
@@ -139,8 +139,8 @@
         }
 
         return {
-          nomePt: cartaPt?.name || cartaEn.name || "Carta Pokémon",
-          nomeEn: cartaEn.name || "Carta Pokémon",
+          nomePt: cartaPt?.name || cartaEn.name || "Carta Pokï¿½mon",
+          nomeEn: cartaEn.name || "Carta Pokï¿½mon",
           possuiVersaoPt: Boolean(cartaPt),
           imagemSmallPt: montarUrlImagemTcg(cartaPt?.image, "low"),
           imagemLargePt: montarUrlImagemTcg(cartaPt?.image, "high"),
@@ -150,10 +150,10 @@
           imagemLargePtPng: montarUrlImagemTcg(cartaPt?.image, "high", "png"),
           imagemSmallEnPng: montarUrlImagemTcg(cartaEn.image, "low", "png"),
           imagemLargeEnPng: montarUrlImagemTcg(cartaEn.image, "high", "png"),
-          setPt: cartaPt?.set?.name || cartaEn.set?.name || "Set não informado",
-          setEn: cartaEn.set?.name || "Set não informado",
-          raridadePt: traduzirRaridadeTcg(cartaPt?.rarity || cartaEn.rarity || "Raridade não informada"),
-          raridadeEn: cartaEn.rarity || "Raridade não informada",
+          setPt: cartaPt?.set?.name || cartaEn.set?.name || "Set nï¿½o informado",
+          setEn: cartaEn.set?.name || "Set nï¿½o informado",
+          raridadePt: traduzirRaridadeTcg(cartaPt?.rarity || cartaEn.rarity || "Raridade nï¿½o informada"),
+          raridadeEn: cartaEn.rarity || "Raridade nï¿½o informada",
           numero: cartaPt?.localId || cartaEn.localId || "-"
         };
       })();
@@ -270,7 +270,7 @@
                 <span class="pokebola-mini pokebola-${sortearPokebola()}"></span>
                 <span>${nome}</span>
               </button>
-            `).join("") : `<p class="historico-vazio">Seu histórico vai aparecer aqui.</p>`}
+            `).join("") : `<p class="historico-vazio">Seu histï¿½rico vai aparecer aqui.</p>`}
           </div>
         </div>
       `;
@@ -294,14 +294,14 @@
 
     function traduzirVersaoPokemon(sufixo) {
       const traducoes = {
-        disguised: "Disfarçado",
+        disguised: "Disfarï¿½ado",
         busted: "Revelado",
         starter: "Inicial",
         school: "Cardume",
         solo: "Solo",
         ordinary: "Comum",
         resolute: "Resoluto",
-        aria: "Ária",
+        aria: "ï¿½ria",
         pirouette: "Pirouette",
         attack: "Ataque",
         defense: "Defesa",
@@ -310,43 +310,43 @@
         origin: "Origem",
         altered: "Alterada",
         land: "Terrestre",
-        sky: "Céu",
+        sky: "Cï¿½u",
         red: "Vermelho",
         blue: "Azul",
         white: "Branco",
         black: "Preto",
-        standard: "Padrão",
+        standard: "Padrï¿½o",
         zen: "Zen",
         incarnate: "Encarnada",
         therian: "Therian",
         male: "Macho",
-        female: "Fêmea",
-        average: "Médio",
+        female: "Fï¿½mea",
+        average: "Mï¿½dio",
         small: "Pequeno",
         large: "Grande",
         super: "Super",
         meteor: "Meteoro",
-        core: "Núcleo",
+        core: "Nï¿½cleo",
         baile: "Baile",
         pompom: "Pompom",
         pau: "Pa'u",
         sensu: "Sensu",
         midday: "Meio-dia",
         midnight: "Meia-noite",
-        dusk: "Crepúsculo",
+        dusk: "Crepï¿½sculo",
         ice: "Gelo",
         noice: "Sem Gelo",
         hangry: "Faminto",
         full: "Completo",
         crown: "Coroa",
-        hero: "Herói",
+        hero: "Herï¿½i",
         zero: "Zero",
         palafin: "Palafin",
-        aqua: "Aquático",
+        aqua: "Aquï¿½tico",
         blaze: "Chama",
         combat: "Combate",
-        rapid: "Rápido",
-        single: "Golpe Único",
+        rapid: "Rï¿½pido",
+        single: "Golpe ï¿½nico",
         strike: "Golpe Decisivo"
       };
 
@@ -439,8 +439,8 @@
         spriteAtualShiny ? "true" : "false"
       );
       botaoShiny.title = spriteAtualShiny
-        ? "Voltar para a versão normal"
-        : "Mostrar versão shiny";
+        ? "Voltar para a versï¿½o normal"
+        : "Mostrar versï¿½o shiny";
 
       atualizarFiltroCartasTcg();
     }
@@ -455,20 +455,20 @@
     function formatarHabilidade(nome) {
       const traducoes = {
         disguise: "Disfarce",
-        cursed_body: "Corpo Amaldiçoado",
-        levitate: "Levitação",
+        cursed_body: "Corpo Amaldiï¿½oado",
+        levitate: "Levitaï¿½ï¿½o",
         overgrow: "Crescer Demais",
         blaze: "Chama",
         torrent: "Torrente",
-        static: "Estática",
+        static: "Estï¿½tica",
         adaptability: "Adaptabilidade",
         synchronize: "Sincronismo",
-        pressure: "Pressão",
+        pressure: "Pressï¿½o",
         sturdy: "Robustez",
-        intimidate: "Intimidação",
+        intimidate: "Intimidaï¿½ï¿½o",
         swarm: "Enxame",
         inner_focus: "Foco Interno",
-        technician: "Técnico"
+        technician: "Tï¿½cnico"
       };
 
       const chave = nome.replace(/-/g, "_");
@@ -484,7 +484,7 @@
           )
         )
         .find(Boolean);
-      const texto = entrada?.flavor_text || "Descrição não disponível.";
+      const texto = entrada?.flavor_text || "Descriï¿½ï¿½o nï¿½o disponï¿½vel.";
 
       return {
         idioma: entrada?.language?.name?.toLowerCase() || "",
@@ -494,7 +494,7 @@
 
     async function traduzirComGoogleCloud(texto, idiomaOrigem = "auto", idiomaDestino = "pt") {
       if (!googleTranslateApiKey) {
-        throw new Error("Google Translate API key não configurada.");
+        throw new Error("Google Translate API key nï¿½o configurada.");
       }
 
       const url = `https://translation.googleapis.com/language/translate/v2?key=${googleTranslateApiKey}`;
@@ -537,7 +537,7 @@
 
       const dadosTraducao = await resposta.json();
       if (!Array.isArray(dadosTraducao) || !Array.isArray(dadosTraducao[0])) {
-        throw new Error("Resposta de tradução inválida.");
+        throw new Error("Resposta de traduï¿½ï¿½o invï¿½lida.");
       }
 
       return dadosTraducao[0].map(fragmento => fragmento[0]).join("").trim() || texto;
@@ -568,7 +568,7 @@
         });
 
         if (!resposta.ok) {
-          throw new Error("Falha no serviço de tradução padrão.");
+          throw new Error("Falha no serviï¿½o de traduï¿½ï¿½o padrï¿½o.");
         }
 
         const dadosTraducao = await resposta.json();
@@ -611,7 +611,7 @@
         });
 
         if (!resposta.ok) {
-          throw new Error("Falha no serviço de tradução padrão.");
+          throw new Error("Falha no serviï¿½o de traduï¿½ï¿½o padrï¿½o.");
         }
 
         const dadosTraducao = await resposta.json();
@@ -1114,17 +1114,17 @@
               class="paginacao-tcg-botao"
               onclick="navegarPaginaTcg(-1)"
               ${paginaAtual <= 0 ? "disabled" : ""}
-              aria-label="Página anterior das cartas"
+              aria-label="Pï¿½gina anterior das cartas"
             >
               ?
             </button>
-            <span class="paginacao-tcg-info">Página ${paginaAtual + 1} de ${Math.max(1, Math.ceil(totalCartas / 6))}</span>
+            <span class="paginacao-tcg-info">Pï¿½gina ${paginaAtual + 1} de ${Math.max(1, Math.ceil(totalCartas / 6))}</span>
             <button
               type="button"
               class="paginacao-tcg-botao"
               onclick="navegarPaginaTcg(1)"
               ${paginaAtual >= Math.ceil(totalCartas / 6) - 1 ? "disabled" : ""}
-              aria-label="Próxima página das cartas"
+              aria-label="Prï¿½xima pï¿½gina das cartas"
             >
               ?
             </button>
@@ -1148,8 +1148,8 @@
           return await buscarDetalhesCartaTcg(cartaBase.id);
         } catch {
           return {
-            nomePt: cartaBase.name || "Carta Pokémon",
-            nomeEn: cartaBase.name || "Carta Pokémon",
+            nomePt: cartaBase.name || "Carta Pokï¿½mon",
+            nomeEn: cartaBase.name || "Carta Pokï¿½mon",
             possuiVersaoPt: false,
             imagemSmallPt: "",
             imagemLargePt: "",
@@ -1159,10 +1159,10 @@
             imagemLargePtPng: "",
             imagemSmallEnPng: montarUrlImagemTcg(cartaBase.image, "low", "png"),
             imagemLargeEnPng: montarUrlImagemTcg(cartaBase.image, "high", "png"),
-            setPt: "Set não informado",
-            setEn: "Set não informado",
-            raridadePt: "Raridade não informada",
-            raridadeEn: "Raridade não informada",
+            setPt: "Set nï¿½o informado",
+            setEn: "Set nï¿½o informado",
+            raridadePt: "Raridade nï¿½o informada",
+            raridadeEn: "Raridade nï¿½o informada",
             numero: cartaBase.localId || "-"
           };
         }
@@ -1185,12 +1185,12 @@
       const setExibicao = idiomaInicial === "pt" ? (carta.setPt || carta.setEn) : (carta.setEn || carta.setPt);
       const raridadeExibicao = idiomaInicial === "pt" ? (carta.raridadePt || carta.raridadeEn) : (carta.raridadeEn || carta.raridadePt);
       const payload = serializarPayloadHtml(carta);
-      const avisoSemPt = temVersaoPt ? "" : `<p class="modal-carta-nota">Versão em Português não disponível para esta carta. Exibindo em Inglês.</p>`;
+      const avisoSemPt = temVersaoPt ? "" : `<p class="modal-carta-nota">Versï¿½o em Portuguï¿½s nï¿½o disponï¿½vel para esta carta. Exibindo em Inglï¿½s.</p>`;
 
       corpo.innerHTML = `
         <div class="modal-carta-idioma">
-          <button type="button" class="idioma-botao ${temVersaoPt ? "ativo" : "inativo"}" onclick="alternarIdiomaCarta('pt', decodeURIComponent('${payload}'))" ${temVersaoPt ? "" : "disabled"}>Português</button>
-          <button type="button" class="idioma-botao ${temVersaoPt ? "" : "ativo"}" onclick="alternarIdiomaCarta('en', decodeURIComponent('${payload}'))">Inglês</button>
+          <button type="button" class="idioma-botao ${temVersaoPt ? "ativo" : "inativo"}" onclick="alternarIdiomaCarta('pt', decodeURIComponent('${payload}'))" ${temVersaoPt ? "" : "disabled"}>Portuguï¿½s</button>
+          <button type="button" class="idioma-botao ${temVersaoPt ? "" : "ativo"}" onclick="alternarIdiomaCarta('en', decodeURIComponent('${payload}'))">Inglï¿½s</button>
         </div>
         <h3 id="tituloCartaTcg">${escaparHtml(tituloInicial)}</h3>
         <img
@@ -1208,7 +1208,7 @@
         <div class="modal-carta-meta">
           <p><strong>Set:</strong> <span data-campo="set">${escaparHtml(setExibicao)}</span></p>
           <p><strong>Raridade:</strong> <span data-campo="raridade">${escaparHtml(raridadeExibicao)}</span></p>
-          <p><strong>Número:</strong> ${escaparHtml(carta.numero)}</p>
+          <p><strong>Nï¿½mero:</strong> ${escaparHtml(carta.numero)}</p>
         </div>
       `;
 
@@ -1251,7 +1251,7 @@
         : (carta.raridadeEn || carta.raridadePt);
 
       botoes.forEach(botao => {
-        const ativo = botao.textContent === (emPortugues ? "Português" : "Inglês");
+        const ativo = botao.textContent === (emPortugues ? "Portuguï¿½s" : "Inglï¿½s");
         botao.classList.toggle("ativo", ativo);
       });
     }
@@ -1324,7 +1324,7 @@
         let secaoTcgHtml = `
           <div class="bloco-info bloco-info-sem-borda">
             <h3>Cartas TCG</h3>
-            <p class="mensagem-tcg">Não foi possível carregar as cartas agora.</p>
+            <p class="mensagem-tcg">Nï¿½o foi possï¿½vel carregar as cartas agora.</p>
           </div>
         `;
         pokemonAtual = data;
@@ -1335,7 +1335,7 @@
         nomeExibicaoTcgAtual = nomeExibicao;
 
         if (
-          descricaoOriginal.texto !== "Descrição não disponível." &&
+          descricaoOriginal.texto !== "Descriï¿½ï¿½o nï¿½o disponï¿½vel." &&
           !["pt", "pt-br"].includes(descricaoOriginal.idioma)
         ) {
           try {
@@ -1393,7 +1393,7 @@
           secaoTcgHtml = `
             <div class="bloco-info bloco-info-sem-borda">
               <h3>Cartas TCG</h3>
-              <p class="mensagem-tcg">Não foi possível carregar as cartas agora.</p>
+              <p class="mensagem-tcg">Nï¿½o foi possï¿½vel carregar as cartas agora.</p>
             </div>
           `;
         }
@@ -1410,7 +1410,7 @@
               class="evolucao-seta"
               onclick="navegarEvolucao(-1)"
               ${indiceNavegacaoAtual <= 0 ? "disabled" : ""}
-              aria-label="Evolução anterior"
+              aria-label="Evoluï¿½ï¿½o anterior"
             >
               ?
             </button>
@@ -1422,7 +1422,7 @@
               class="evolucao-seta"
               onclick="navegarEvolucao(1)"
               ${indiceNavegacaoAtual === -1 || indiceNavegacaoAtual >= navegacaoAtual.length - 1 ? "disabled" : ""}
-              aria-label="Próxima evolução"
+              aria-label="Prï¿½xima evoluï¿½ï¿½o"
             >
               ?
             </button>
@@ -1436,27 +1436,27 @@
               class="botao-shiny ${data.sprites.front_shiny ? "" : "desabilitado"}"
               onclick="alternarShiny()"
               ${data.sprites.front_shiny ? "" : "disabled"}
-              aria-label="Alternar versão shiny"
+              aria-label="Alternar versï¿½o shiny"
               aria-pressed="false"
-              title="${data.sprites.front_shiny ? "Mostrar versão shiny" : "Versão shiny indisponível"}"
+              title="${data.sprites.front_shiny ? "Mostrar versï¿½o shiny" : "Versï¿½o shiny indisponï¿½vel"}"
             >
               ? Shiny
             </button>
           </div>
 
-          <div class="abas-resultado" role="tablist" aria-label="Alternar entre informações e cartas TCG">
-            <button type="button" class="aba-resultado ativa" data-aba="informacoes" role="tab" aria-selected="true" onclick="alternarAbaResultado('informacoes')">Informações</button>
+          <div class="abas-resultado" role="tablist" aria-label="Alternar entre informaï¿½ï¿½es e cartas TCG">
+            <button type="button" class="aba-resultado ativa" data-aba="informacoes" role="tab" aria-selected="true" onclick="alternarAbaResultado('informacoes')">Informaï¿½ï¿½es</button>
             <button type="button" class="aba-resultado" data-aba="tcg" role="tab" aria-selected="false" onclick="alternarAbaResultado('tcg')">Cartas TCG</button>
           </div>
 
           <div class="painel-resultado" data-painel="informacoes">
             <div class="bloco-info bloco-info-sem-borda">
-              <h3>Descrição</h3>
+              <h3>Descriï¿½ï¿½o</h3>
               <p class="descricao-pokemon">${descricaoPokemon}</p>
             </div>
 
             <div class="bloco-info">
-              <h3>Informações básicas</h3>
+              <h3>Informaï¿½ï¿½es bï¿½sicas</h3>
               <p><strong>Tipo:</strong> ${tiposFormatados}</p>
               <p><strong>Habilidades:</strong> ${habilidadesFormatadas.join(", ")}</p>
               <p>?? <strong>Peso:</strong> ${pesoKg} kg</p>
@@ -1476,14 +1476,14 @@
             </div>
 
             <div class="bloco-info">
-              <h3>Fraquezas e resistências</h3>
+              <h3>Fraquezas e resistï¿½ncias</h3>
               <div class="grupo-relacao">
                 <span class="titulo-relacao">Fraquezas</span>
                 <div class="chips-linha">${renderizarListaChips(relacoesDeDano.fraquezas, "chip-vazio", "Nenhuma fraqueza relevante")}</div>
               </div>
               <div class="grupo-relacao">
-                <span class="titulo-relacao">Resistências</span>
-                <div class="chips-linha">${renderizarListaChips(relacoesDeDano.resistencias, "chip-vazio", "Nenhuma resistência relevante")}</div>
+                <span class="titulo-relacao">Resistï¿½ncias</span>
+                <div class="chips-linha">${renderizarListaChips(relacoesDeDano.resistencias, "chip-vazio", "Nenhuma resistï¿½ncia relevante")}</div>
               </div>
               <div class="grupo-relacao">
                 <span class="titulo-relacao">Imunidades</span>
@@ -1501,14 +1501,14 @@
           return;
         }
 
-        document.getElementById("resultado").innerHTML = "? Pokémon não encontrado!";
+        document.getElementById("resultado").innerHTML = "? Pokï¿½mon nï¿½o encontrado!";
       }
     }
 
     function alternarModo(modo) {
       modoAtual = modo;
 
-      // Fechar sugestões e histórico
+      // Fechar sugestï¿½es e histï¿½rico
       document.getElementById("sugestoes").innerHTML = "";
       document.getElementById("sugestoesPacotes").innerHTML = "";
       fecharHistorico();
@@ -1528,7 +1528,7 @@
         campoBuscaPacote.hidden = true;
         document.getElementById("sugestoes").hidden = false;
         document.getElementById("sugestoesPacotes").hidden = true;
-        // Limpar campos e sugestões de pacote
+        // Limpar campos e sugestï¿½es de pacote
         campoBuscaPacote.value = "";
         document.getElementById("sugestoesPacotes").innerHTML = "";
         // Limpar resultado anterior
@@ -1538,13 +1538,13 @@
         campoBuscaPacote.hidden = false;
         document.getElementById("sugestoes").hidden = true;
         document.getElementById("sugestoesPacotes").hidden = false;
-        // Limpar campos e sugestões de pokemon
+        // Limpar campos e sugestï¿½es de pokemon
         campoBuscaPokemon.value = "";
         document.getElementById("sugestoes").innerHTML = "";
         resultado.innerHTML = `
           <div class="painel-pacotes-tcg">
             <p style="text-align: center; margin-top: 32px; color: #5f6f84;">
-              Digite o nome de um pacote TCG para começar a busca.
+              Digite o nome de um pacote TCG para comeï¿½ar a busca.
             </p>
           </div>
         `;
@@ -1617,55 +1617,74 @@
       try {
         const pacotesMap = new Map(); // ID -> { pt: pacotePT, en: pacoteEN }
         
-        // Primeiro buscar em português (prioridade)
-        try {
-          for (const idioma of ['pt-br', 'pt']) {
-            try {
-              const query = new URLSearchParams({
-                name: consulta,
-                "pagination:itemsPerPage": "20"
-              });
-              const endpoint = `${endpointTcg}/${idioma}/sets?${query.toString()}`;
-              const pacotes = await buscarJson(endpoint);
-              
-              if (Array.isArray(pacotes)) {
-                pacotes.forEach(pacote => {
-                  if (!pacotesMap.has(pacote.id)) {
-                    pacotesMap.set(pacote.id, { pt: pacote, en: null });
-                  } else {
-                    const existing = pacotesMap.get(pacote.id);
-                    existing.pt = pacote;
-                  }
-                });
-              }
-              break; // Parar no primeiro idioma PT que funcionar
-            } catch {
-              continue;
+        // Identificar termos cruzados para buscar em inglÃªs ou portuguÃªs simultaneamente
+        const termosBusca = [chaveConsulta];
+        if (typeof traducoesPacotesTcg !== "undefined" && chaveConsulta.length >= 3) {
+          for (const [enName, ptName] of Object.entries(traducoesPacotesTcg)) {
+            if (ptName.toLowerCase().includes(chaveConsulta) && !termosBusca.includes(enName.toLowerCase())) {
+              termosBusca.push(enName.toLowerCase());
+            }
+            if (enName.toLowerCase().includes(chaveConsulta) && !termosBusca.includes(ptName.toLowerCase())) {
+              termosBusca.push(ptName.toLowerCase());
             }
           }
-        } catch {}
+        }
         
-        // Depois buscar em inglês para completar dados faltantes
-        try {
-          const query = new URLSearchParams({
-            name: consulta,
-            "pagination:itemsPerPage": "20"
-          });
-          const pacotes = await buscarJson(`${endpointTcg}/en/sets?${query.toString()}`);
-          
-          if (Array.isArray(pacotes)) {
-            pacotes.forEach(pacote => {
-              if (!pacotesMap.has(pacote.id)) {
-                pacotesMap.set(pacote.id, { pt: null, en: pacote });
-              } else {
-                const existing = pacotesMap.get(pacote.id);
-                if (!existing.en) existing.en = pacote;
+        const termosUnicos = termosBusca.slice(0, 3);
+        
+        const promessasBusca = termosUnicos.map(async (termo) => {
+          // Buscar em portuguÃªs
+          try {
+            for (const idioma of ['pt-br', 'pt']) {
+              try {
+                const query = new URLSearchParams({
+                  name: termo,
+                  "pagination:itemsPerPage": "20"
+                });
+                const endpoint = `${endpointTcg}/${idioma}/sets?${query.toString()}`;
+                const pacotes = await buscarJson(endpoint);
+                
+                if (Array.isArray(pacotes)) {
+                  pacotes.forEach(pacote => {
+                    if (!pacotesMap.has(pacote.id)) {
+                      pacotesMap.set(pacote.id, { pt: pacote, en: null });
+                    } else {
+                      const existing = pacotesMap.get(pacote.id);
+                      if (!existing.pt) existing.pt = pacote;
+                    }
+                  });
+                }
+                break; // Parar no primeiro idioma PT que funcionar para este termo
+              } catch {
+                continue;
               }
+            }
+          } catch {}
+          
+          // Buscar em inglÃªs
+          try {
+            const query = new URLSearchParams({
+              name: termo,
+              "pagination:itemsPerPage": "20"
             });
-          }
-        } catch {}
+            const pacotes = await buscarJson(`${endpointTcg}/en/sets?${query.toString()}`);
+            
+            if (Array.isArray(pacotes)) {
+              pacotes.forEach(pacote => {
+                if (!pacotesMap.has(pacote.id)) {
+                  pacotesMap.set(pacote.id, { pt: null, en: pacote });
+                } else {
+                  const existing = pacotesMap.get(pacote.id);
+                  if (!existing.en) existing.en = pacote;
+                }
+              });
+            }
+          } catch {}
+        });
+
+        await Promise.all(promessasBusca);
         
-        // Retornar pacotes com nome em português (ou inglês se não houver PT)
+        // Retornar pacotes com nome em portuguï¿½s (ou inglï¿½s se nï¿½o houver PT)
         const resultado = Array.from(pacotesMap.values())
           .map(({ pt, en }) => pt || en)
           .filter(p => p !== null && p !== undefined)
@@ -1709,7 +1728,7 @@
 
         resultado.innerHTML = `
           <div style="padding: 32px 20px; text-align: center;">
-            <p style="color: #d62828;">Não foi possível carregar o pacote.</p>
+            <p style="color: #d62828;">Nï¿½o foi possï¿½vel carregar o pacote.</p>
           </div>
         `;
       }
@@ -1719,7 +1738,7 @@
       const itensPorPagina = 6;
       const totalPaginas = Math.ceil(cartas.length / itensPorPagina);
 
-      // Armazenar estado global para navegação
+      // Armazenar estado global para navegaï¿½ï¿½o
       window.paginaPacoteAtual = 0;
       window.setAtualPacote = set;
       window.cartasAtualPacote = cartas;
@@ -1776,7 +1795,7 @@
               >
                 ?
               </button>
-              <span class="paginacao-tcg-info">Página ${paginaAtual + 1} de ${totalPaginas}</span>
+              <span class="paginacao-tcg-info">Pï¿½gina ${paginaAtual + 1} de ${totalPaginas}</span>
               <button
                 type="button"
                 class="paginacao-tcg-botao"

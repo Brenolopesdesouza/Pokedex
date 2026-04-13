@@ -91,6 +91,152 @@
     const debounceBuscaPacoteMs = 220;
     const limiteConcorrenciaTcg = 6;
     const chaveListaPokemonsCache = "pokedex-cache-lista-pokemons-v1";
+    const traducoesPacotesTcg = {
+      // Classic
+      "Base Set": "Conjunto Base",
+      "Jungle": "Selva",
+      "Fossil": "Fóssil",
+      "Base Set 2": "Conjunto Base 2",
+      "Team Rocket": "Equipe Rocket",
+      // Gym
+      "Gym Heroes": "Heróis de Ginásio",
+      "Gym Challenge": "Desafio de Ginásio",
+      // Neo
+      "Neo Genesis": "Neo Gênese",
+      "Neo Discovery": "Neo Descoberta",
+      "Neo Revelation": "Neo Revelação",
+      "Neo Destiny": "Neo Destino",
+      // Legendary
+      "Legendary Collection": "Coleção Lendária",
+      // e-Card
+      "Expedition Base Set": "Conjunto Base da Expedição",
+      "Aquapolis": "Aquápolis",
+      "Skyridge": "Cumes Celestes",
+      // EX
+      "EX Ruby & Sapphire": "EX Rubi e Safira",
+      "EX Sandstorm": "EX Tempestade de Areia",
+      "EX Dragon": "EX Dragão",
+      "EX Team Magma vs Team Aqua": "EX Equipe Magma vs Equipe Aqua",
+      "EX Hidden Legends": "EX Lendas Ocultas",
+      "EX FireRed & LeafGreen": "EX FireRed e LeafGreen",
+      "EX Team Rocket Returns": "EX Retorno da Equipe Rocket",
+      "EX Deoxys": "EX Deoxys",
+      "EX Emerald": "EX Esmeralda",
+      "EX Unseen Forces": "EX Forças Ocultas",
+      "EX Delta Species": "EX Espécies Delta",
+      "EX Legend Maker": "EX Criador de Lendas",
+      "EX Holon Phantoms": "EX Fantasmas de Holon",
+      "EX Crystal Guardians": "EX Guardiões dos Cristais",
+      "EX Dragon Frontiers": "EX Fronteiras do Dragão",
+      "EX Power Keepers": "EX Guardiões do Poder",
+      // Diamond & Pearl
+      "Diamond & Pearl": "Diamante e Pérola",
+      "Mysterious Treasures": "Tesouros Misteriosos",
+      "Secret Wonders": "Maravilhas Secretas",
+      "Great Encounters": "Grandes Encontros",
+      "Majestic Dawn": "Alvorada Majestosa",
+      "Legends Awakened": "Lendas Despertadas",
+      "Stormfront": "Frente de Batalha",
+      // Platinum
+      "Platinum": "Platina",
+      "Rising Rivals": "Rivais Emergentes",
+      "Supreme Victors": "Vencedores Supremos",
+      "Arceus": "Arceus",
+      // HeartGold & SoulSilver
+      "HeartGold & SoulSilver": "HeartGold e SoulSilver",
+      "Unleashed": "Libertos",
+      "Undaunted": "Destemidos",
+      "Triumphant": "Triunfante",
+      "Call of Legends": "Chamado das Lendas",
+      // Black & White
+      "Black & White": "Preto e Branco",
+      "Emerging Powers": "Poderes Emergentes",
+      "Noble Victories": "Vitórias Nobres",
+      "Next Destinies": "Próximos Destinos",
+      "Dark Explorers": "Exploradores da Escuridão",
+      "Dragons Exalted": "Dragões Enaltecidos",
+      "Boundaries Crossed": "Fronteiras Cruzadas",
+      "Plasma Storm": "Tempestade de Plasma",
+      "Plasma Freeze": "Congelamento de Plasma",
+      "Plasma Blast": "Explosão de Plasma",
+      "Legendary Treasures": "Tesouros Lendários",
+      // XY
+      "XY": "XY",
+      "Kalos Starter Set": "Kit de Treinador XY",
+      "Flashfire": "Chama-Relâmpago",
+      "Furious Fists": "Punhos Furiosos",
+      "Phantom Forces": "Forças Fantasma",
+      "Primal Clash": "Conflito Primitivo",
+      "Double Crisis": "Crise Dupla",
+      "Roaring Skies": "Céus Estrondosos",
+      "Ancient Origins": "Origens Ancestrais",
+      "BREAKthrough": "TURBOruptura",
+      "BREAKpoint": "TURBOlimite",
+      "Generations": "Gerações",
+      "Fates Collide": "Fusão de Destinos",
+      "Steam Siege": "Cerco de Vapor",
+      "Evolutions": "Evoluções",
+      "XY Promos": "Promoções XY",
+      // Sun & Moon
+      "Sun & Moon": "Sol e Lua",
+      "Guardians Rising": "Guardiões em Ascensão",
+      "Burning Shadows": "Sombras Ardentes",
+      "Shining Legends": "Lendas Brilhantes",
+      "Crimson Invasion": "Invasão Carmesim",
+      "Ultra Prism": "Ultraprisma",
+      "Forbidden Light": "Luz Proibida",
+      "Celestial Storm": "Tempestade Celestial",
+      "Dragon Majesty": "Majestade do Dragão",
+      "Lost Thunder": "Trovões Perdidos",
+      "Team Up": "União de Aliados",
+      "Detective Pikachu": "Detetive Pikachu",
+      "Unbroken Bonds": "Vínculos Inquebráveis",
+      "Unified Minds": "Sintonia Mental",
+      "Hidden Fates": "Destinos Ocultos",
+      "Cosmic Eclipse": "Eclipse Cósmico",
+      // Sword & Shield
+      "Sword & Shield": "Espada e Escudo",
+      "Rebel Clash": "Rixa Rebelde",
+      "Darkness Ablaze": "Escuridão Incandescente",
+      "Champion's Path": "Caminho do Campeão",
+      "Vivid Voltage": "Voltagem Vívida",
+      "Shining Fates": "Destinos Brilhantes",
+      "Battle Styles": "Estilos de Batalha",
+      "Chilling Reign": "Reinado Arrepiante",
+      "Evolving Skies": "Céus em Evolução",
+      "Celebrations": "Celebrações",
+      "Fusion Strike": "Golpe Fusão",
+      "Brilliant Stars": "Estrelas Brilhantes",
+      "Astral Radiance": "Radiância Astral",
+      "Pokemon Go": "Pokémon GO",
+      "Lost Origin": "Origem Perdida",
+      "Silver Tempest": "Tempestade Prateada",
+      "Crown Zenith": "Realeza Absoluta",
+      // Scarlet & Violet
+      "Scarlet & Violet": "Escarlate e Violeta",
+      "Paldea Evolved": "Evoluções em Paldea",
+      "Obsidian Flames": "Chamas Obsidianas",
+      "151": "151",
+      "Paradox Rift": "Fenda Paradoxal",
+      "Paldean Fates": "Destinos de Paldea",
+      "Temporal Forces": "Forças Temporais",
+      "Twilight Masquerade": "Máscaras do Crepúsculo",
+      "Shrouded Fable": "Fábula Velada",
+      // Japanese sets that might be searched
+      "VSTAR Universe": "Universo V-ASTRO",
+      "Clay Burst": "Explosão de Argila",
+      "Ancient Roar": "Rugido Ancestral",
+      "Space Juggler": "Malabarista do Espaço",
+      // Others
+      "Miscellaneous Cards": "Cartas Diversas",
+      "Gym Promo": "Promoção Ginásio",
+      "Machamp Theme Deck": "Deck Temático Machamp",
+      "Venusaur Theme Deck": "Deck Temático Venusaur",
+      "Blastoise Theme Deck": "Deck Temático Blastoise",
+      "Charizard Theme Deck": "Deck Temático Charizard",
+      "Pikachu Theme Deck": "Deck Temático Pikachu",
+      "Dragonite Theme Deck": "Deck Temático Dragonite"
+    };
     const tiposTcgDisponiveis = [
       { valor: "Grass", rotulo: "Planta" },
       { valor: "Fire", rotulo: "Fogo" },
@@ -2012,6 +2158,27 @@
       }
     }
 
+    function formatarNomePacoteBilingue(nomeIngles) {
+      // Procurar a tradução com case-insensitive
+      let nomePt = null;
+      for (const [chave, valor] of Object.entries(traducoesPacotesTcg)) {
+        if (chave.toLowerCase() === nomeIngles.toLowerCase()) {
+          nomePt = valor;
+          break;
+        }
+      }
+      
+      if (!nomePt) {
+        return nomeIngles;
+      }
+      
+      if (normalizarNomeComparacao(nomePt) === normalizarNomeComparacao(nomeIngles)) {
+        return nomeIngles;
+      }
+      
+      return `${nomePt} / ${nomeIngles}`;
+    }
+
     function buscarSugestoesPacotes() {
       clearTimeout(debounceBuscaPacoteTimer);
       debounceBuscaPacoteTimer = setTimeout(executarBuscaSugestoesPacotes, debounceBuscaPacoteMs);
@@ -2044,12 +2211,15 @@
 
           sugestoesDiv.innerHTML = pacotes
             .slice(0, 10)
-            .map(pacote => `
-              <div class="item" data-set-id="${pacote.id}" data-set-name="${escaparHtml(pacote.name)}" onclick="selecionarPacoteClick(this)">
-                <strong>${escaparHtml(pacote.name)}</strong>
+            .map(pacote => {
+              const nomeBilingue = formatarNomePacoteBilingue(pacote.name);
+              return `
+              <div class="item" data-set-id="${pacote.id}" data-set-name-en="${escaparHtml(pacote.name)}" onclick="selecionarPacoteClick(this)">
+                <strong>${escaparHtml(nomeBilingue)}</strong>
                 <span style="font-size: 0.85rem; color: #5f6f84;">${pacote.cardCount?.official ?? pacote.cardCount?.total ?? 0} cartas</span>
               </div>
-            `)
+            `;
+            })
             .join("");
         })
         .catch(() => {
@@ -2063,7 +2233,7 @@
 
     function selecionarPacoteClick(elemento) {
       const setId = elemento.dataset.setId;
-      const setName = elemento.dataset.setName;
+      const setName = elemento.dataset.setNameEn;
       selecionarPacote(setId, setName);
     }
 
@@ -2078,57 +2248,103 @@
       try {
         const pacotesMap = new Map(); // ID -> { pt: pacotePT, en: pacoteEN }
         
-        // Primeiro buscar em português (prioridade)
-        try {
-          for (const idioma of ['pt-br', 'pt']) {
-            try {
-              const query = new URLSearchParams({
-                name: consulta,
-                "pagination:itemsPerPage": "20"
-              });
-              const endpoint = `${endpointTcg}/${idioma}/sets?${query.toString()}`;
-              const pacotes = await buscarJson(endpoint);
-              
-              if (Array.isArray(pacotes)) {
-                pacotes.forEach(pacote => {
-                  if (!pacotesMap.has(pacote.id)) {
-                    pacotesMap.set(pacote.id, { pt: pacote, en: null });
-                  } else {
-                    const existing = pacotesMap.get(pacote.id);
-                    existing.pt = pacote;
-                  }
-                });
-              }
-              break; // Parar no primeiro idioma PT que funcionar
-            } catch {
-              continue;
+        // Identificar termos cruzados para buscar em inglês ou português simultaneamente
+        const termosBusca = [chaveConsulta];
+        if (chaveConsulta.length >= 3) {
+          for (const [enName, ptName] of Object.entries(traducoesPacotesTcg)) {
+            if (ptName.toLowerCase().includes(chaveConsulta) && !termosBusca.includes(enName.toLowerCase())) {
+              termosBusca.push(enName.toLowerCase());
+            }
+            if (enName.toLowerCase().includes(chaveConsulta) && !termosBusca.includes(ptName.toLowerCase())) {
+              termosBusca.push(ptName.toLowerCase());
             }
           }
-        } catch {}
+        }
         
-        // Depois buscar em inglês para completar dados faltantes
-        try {
-          const query = new URLSearchParams({
-            name: consulta,
-            "pagination:itemsPerPage": "20"
-          });
-          const pacotes = await buscarJson(`${endpointTcg}/en/sets?${query.toString()}`);
-          
-          if (Array.isArray(pacotes)) {
-            pacotes.forEach(pacote => {
-              if (!pacotesMap.has(pacote.id)) {
-                pacotesMap.set(pacote.id, { pt: null, en: pacote });
-              } else {
-                const existing = pacotesMap.get(pacote.id);
-                if (!existing.en) existing.en = pacote;
+        const termosUnicos = termosBusca.slice(0, 3);
+        
+        const promessasBusca = termosUnicos.map(async (termo) => {
+          // Buscar em português
+          try {
+            for (const idioma of ['pt-br', 'pt']) {
+              try {
+                const query = new URLSearchParams({
+                  name: termo,
+                  "pagination:itemsPerPage": "20"
+                });
+                const endpoint = `${endpointTcg}/${idioma}/sets?${query.toString()}`;
+                const pacotes = await buscarJson(endpoint);
+                
+                if (Array.isArray(pacotes)) {
+                  pacotes.forEach(pacote => {
+                    if (!pacotesMap.has(pacote.id)) {
+                      pacotesMap.set(pacote.id, { pt: pacote, en: null });
+                    } else {
+                      const existing = pacotesMap.get(pacote.id);
+                      if (!existing.pt) existing.pt = pacote;
+                    }
+                  });
+                }
+                break;
+              } catch {
+                continue;
               }
+            }
+          } catch {}
+          
+          // Buscar em inglês
+          try {
+            const query = new URLSearchParams({
+              name: termo,
+              "pagination:itemsPerPage": "20"
             });
-          }
-        } catch {}
+            const pacotes = await buscarJson(`${endpointTcg}/en/sets?${query.toString()}`);
+            
+            if (Array.isArray(pacotes)) {
+              pacotes.forEach(pacote => {
+                if (!pacotesMap.has(pacote.id)) {
+                  pacotesMap.set(pacote.id, { pt: null, en: pacote });
+                } else {
+                  const existing = pacotesMap.get(pacote.id);
+                  if (!existing.en) existing.en = pacote;
+                }
+              });
+            }
+          } catch {}
+        });
+
+        await Promise.all(promessasBusca);
         
-        // Retornar pacotes com nome em português (ou inglês se não houver PT)
+        // Para pacotes encontrados em português, buscar versão em inglês pelo ID
+        const idsParaBuscarEn = Array.from(pacotesMap.entries())
+          .filter(([_, valor]) => valor.pt && !valor.en)
+          .map(([id, _]) => id);
+        
+        if (idsParaBuscarEn.length > 0) {
+          const buscasEn = idsParaBuscarEn.map(id =>
+            buscarJson(`${endpointTcg}/en/sets/${id}`)
+              .then(pacote => {
+                const existing = pacotesMap.get(pacote.id);
+                if (existing) {
+                  existing.en = pacote;
+                }
+              })
+              .catch(() => {})
+          );
+          await Promise.all(buscasEn);
+        }
+        
+        // Retornar pacotes com ambos os nomes (EN e PT)
         const resultado = Array.from(pacotesMap.values())
-          .map(({ pt, en }) => pt || en)
+          .map(({ pt, en }) => {
+            const pacoteBase = pt || en;
+            return {
+              id: pacoteBase.id,
+              name: en?.name || pacoteBase.name,
+              namePt: pt?.name || null,
+              cardCount: pacoteBase.cardCount
+            };
+          })
           .filter(p => p !== null && p !== undefined)
           .slice(0, 10);
         
@@ -2145,14 +2361,15 @@
     async function selecionarPacote(setId, nomePacote) {
       const sequenciaAtual = ++sequenciaSelecaoPacote;
       const resultado = document.getElementById("resultado");
+      const nomeBilingue = formatarNomePacoteBilingue(nomePacote);
       resultado.innerHTML = `
         <div style="padding: 32px 20px;">
-          <h2>${escaparHtml(nomePacote)}</h2>
+          <h2>${escaparHtml(nomeBilingue)}</h2>
           <p style="color: #5f6f84;">Carregando cartas...</p>
         </div>
       `;
 
-      document.getElementById("buscaPacote").value = nomePacote;
+      document.getElementById("buscaPacote").value = nomeBilingue;
       document.getElementById("sugestoesPacotes").innerHTML = "";
       filtrosPacoteTcgAtivos = {
         tipo: "",
@@ -2175,7 +2392,7 @@
           cartasFiltradas: setDetalhe.cartas,
           paginaAtual: 0,
           totalOficial: setDetalhe.totalOficial || setDetalhe.set.cardCount?.official || setDetalhe.cartas.length,
-          nomePacote
+          nomePacote: nomeBilingue
         };
         resultado.innerHTML = renderizarPacoteResultado(estadoPacoteTcgAtual);
       } catch {
@@ -2198,6 +2415,7 @@
       const totalPaginas = Math.ceil(listaFiltrada.length / itensPorPagina);
       const inicio = paginaAtual * itensPorPagina;
       const cartasPagina = listaFiltrada.slice(inicio, inicio + itensPorPagina);
+      const nomePacoteBilingue = formatarNomePacoteBilingue(set.name);
 
       const cartasHtml = cartasPagina.map(carta => {
         const payload = serializarPayloadHtml(carta);
@@ -2235,7 +2453,7 @@
         <div class="bloco-info bloco-info-sem-borda">
           <div class="topo-tcg">
             <div>
-              <h3>${escaparHtml(set.name)}</h3>
+              <h3>${escaparHtml(nomePacoteBilingue)}</h3>
               <p style="margin: 0; font-size: 0.9rem; color: #5f6f84;">
                 ${set.releaseDate ? new Date(set.releaseDate).toLocaleDateString("pt-BR") : "Data desconhecida"}
               </p>
