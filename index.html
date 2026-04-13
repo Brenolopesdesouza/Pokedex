@@ -10,6 +10,7 @@
       background: #f0f0f0;
     }
 
+    /* Logo pequena no canto (opcional) */
     #logo {
       position: absolute;
       top: 10px;
@@ -17,8 +18,11 @@
       width: 60px;
     }
 
-    h1 {
-      margin-top: 60px;
+    /* 🔥 LOGO PRINCIPAL CENTRALIZADA */
+    #logoPrincipal {
+      width: 250px;
+      display: block;
+      margin: 40px auto 10px auto;
     }
 
     input {
@@ -63,12 +67,15 @@
 </head>
 <body>
 
-  <!-- 🔥 LOGO DA POKEDEX (troque o nome do arquivo aqui) -->
+  <!-- (Opcional) Logo pequena no canto -->
   <img src="pokedex.png" id="logo">
 
-  <h1>🔍 Pokédex</h1>
+  <!-- 🔥 SUA LOGO CENTRAL (troque o nome do arquivo aqui) -->
+  <img src="Pokemon-Logo.png" id="logoPrincipal">
 
+  <!-- Campo de busca -->
   <input type="text" id="busca" placeholder="Digite o nome..." oninput="buscarSugestoes()">
+  
   <div id="sugestoes"></div>
 
   <div id="resultado"></div>
